@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+       <meta charset="utf-8" >
+       <meta name="descripion" content="zadanie" />
+       <link rel="stylesheet" href="style.css" />
+       <title>Zadanie zdalne e-MSI</title>
+       <script>
+         var colorWell;
+         var defaultColor = "#0000ff";
+         function updateFirst(event) {
+         var td = document.querySelector("td");
+
+         if (td) {
+         td.style.color = event.target.value;
+          }
+             }
+
+         window.addEventListener("load", startup, false); 
+         function startup() {
+         colorWell = document.querySelector("#colorWell");
+         colorWell.value = defaultColor;
+         colorWell.addEventListener("input", updateFirst, false);
+         colorWell.addEventListener("change", updateAll, false);
+         colorWell.select(); 
+         function updateAll(event) {
+         document.querySelectorAll("td").forEach(function(td) {
+         td.style.color = event.target.value;
+        });
+        }
+           }
+      </script>
+     </head>
+     <body>
+         <div id="content">
+         <div id="lewy">
+            <ul>
+               <li><a href="index.html">Różne kontrolki HTML </a>
+               <li><a href="tabela_pracowników.html">Tabela Pracowników </a>
+               <li><a href="tabela_faktur.html">Tabela Faktur VAT </a>
+               <li><a href="tabela_delegacji_db.php">Tabela Delegacji BD </a>
+               <li><a href="dane_kontrahentów.php">Dane kontrahentów</a>
+             </ul>
+
+
+         </div>
+         <div id="prawy">
+         
+           
+
+          <table>
+               <tr id="1"> <th>Lp. <th> Imię <th>Nazwisko <th> Stanowisko <th>Data Zatrudnienia <th>Ilość Dni urlopowych</tr>
+                <td>1</td> <td>Kamil</td> <td>Steć</td><td>Prezes</td><td>2018-06-01</td><td>15</td>
+                
+                 <tr id="2">
+                  <td>2</td><td>Krystyna</td><td>Mucha</td><td>Księgowa</td><td>2018-06-02</td> <td>21</td>
+                  </tr>
+                  <tr id="1">
+                     <td>3</td><td>Daniel</td><td>Kowalski</td><td>Konserwator</td><td>2018-06-15</td> <td>13</td>
+                     </tr>
+                     <tr id="2">
+                        <td>4</td><td>Gracjan</td><td>Ptok</td><td>Analityk</td><td>2018-09-01</td> <td>9</td>
+                        </tr>
+                        <tr id="1">
+                           <td>5</td><td>Paweł</td><td>Makłowicz</td><td>Młodszy Analityk</td><td>2019-03-02</td> <td>6</td>
+                           </tr>
+                  </table>
+                  <label for="colorWell"></label>
+                  <input type="color" value="#ff0000" id="colorWell">
+                  
+
+         
+          
+   
+            
+         </div>
+        </div>
+        
+         <div id="stopka">
+
+            Grabowski Dawid
+         </div>
+
+        
+
+
+
+
+
+     </body>
+
+
+
+
+
+
+
+
+
+
+</html>

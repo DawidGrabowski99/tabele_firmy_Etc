@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+       <meta charset="utf-8" >
+       <meta name="descripion" content="zadanie" />
+       <link rel="stylesheet" href="style.css" />
+       <title>Zadanie zdalne e-MSI</title>
+       <script> 
+    
+
+        function akcja() {
+	     var kolorek = document.getElementById("kolory").value;
+	     document.getElementById("prawy").style.color = kolorek; 
+	
+	    
+          }
+
+
+    </script>
+     </head>
+     <body>
+         
+
+         <div id="content">
+         <div id="lewy">
+            <ul>
+                <li><a href="index.html">Różne kontrolki HTML </a>
+                <li><a href="tabela_pracowników.html">Tabela Pracowników </a>
+                <li><a href="tabela_faktur.html">Tabela Faktur VAT </a>
+                <li><a href="tabela_delegacji_db.php">Tabela Delegacji BD </a>
+                <li><a href="dane_kontrahentów.php">Dane kontrahentów</a>
+              </ul>
+
+
+         </div>
+         <div id="prawy">
+             <P>Dane kontrahenta
+             <form action="#" method="POST" autocomplete="off">
+                <div>
+                    <label for="name">NIP</label>
+                    <input id="name" type="text"  autofocus="true">
+                </div>
+                <div>
+                    <label for="name">REGON</label>
+                    <input id="regon" type="number" >
+                </div>
+                <div>
+                    <label for="name">NAZWA</label>
+                    <input id="name" type="text" >
+                </div>
+                <div >
+                   <label for="date">DATA POWSTANIA</label>
+                   <input id="date" type="date">
+                </div>
+                <div >
+                   <label for="name">ULICA</label>
+                   <input id="name" type="text" >
+                   
+                </div>
+               <div >
+                <label for="name">NUMER DOMU</label>
+                <input id="name" type="text" >
+                
+                </div>
+                <div >
+                   <label for="name">NUMER MIESZKANIA</label>
+                    <input id="name" type="text" >
+                
+                 </div>
+                <div >
+                    <label for="name">UWAGI</label>
+                    <textarea id="uwagi"> </textarea>
+                </div>
+                <div >
+                
+                    <label>Wybierz z listy:</label>
+                    <select id="kolory">
+                        
+                        <option value="#008000">Zielony</option>
+                        <option value="#0000FF">Niebieski</option>
+                        <option value="#808080">Szary</option>
+                        <option value="#30d5c8">Turkusowy</option>
+                        <option value="#000080">Granatowy</option>
+                        <option value="#FF0000" >Czerwony</option>
+                        <option value="#ffffff ">Biały</option>
+                      </select>
+                    <button type="button" onclick="akcja()">Zmień kolor</button>
+
+                    
+                
+                </div>
+                <div >
+                    <label for="VAT">Wybierz Vat</label>
+                    <select id="VAT">
+                        <option value="0.0">ZW</option>
+                        <option>NP</option>
+                        <option value="0.0">0%</option>
+                        <option value="0.3">3%</option>
+                        <option value="0.08">8%</option>
+                        <option value="0.23">23%</option>
+                        
+                    </select>
+                </div>
+                <ol>
+                    <li>Element</li>
+                    <li>Element</li>
+                    <li>Element</li>
+                </ol>
+         
+   
+   
+   
+            </form>
+   
+            </P>
+         </div>
+        </div>
+        
+         <div id="stopka">
+
+            Grabowski Dawid
+         </div>
+
+        
+
+
+
+
+
+     </body>
+
+
+
+
+
+
+
+
+
+
+</html>

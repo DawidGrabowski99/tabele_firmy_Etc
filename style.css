@@ -1,0 +1,36 @@
+ a {text-decoration: none;}
+ ul {list-style: none;}
+#lewy {
+    width: 25%;
+    float: left;
+    height: 500px;
+}
+#prawy {
+    width: 75%;
+    float: left;
+    height: 500px;
+}
+#stopka {
+    width: 100%;
+    clear: both;
+}
+div.content {
+    width: 100%;
+}
+
+table,
+td,
+th {
+    border: 1px solid #333;
+}
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
+
+input,
+select {
+    border: none;
+}

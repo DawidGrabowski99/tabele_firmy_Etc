@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid #333;
+        }
+
+        thead,
+        tfoot {
+            background-color: #333;
+            color: #fff;
+        }
+
+        input,
+        select {
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="taxCalc">
+        <thead>
+            <tr>
+                <th>Lp.</th>
+                <th>Opis</th>
+                <th>MPK</th>
+                <th>Kwota Netto 1szt.</th>
+                <th>Ilość</th>
+                <th>VAT</th>
+                <th>Kwota Brutto</th>
+                <th>Cały VAT</th>
+                <th>Wartość Brutto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Biurka</td>
+                <td>Biuro</td>
+                <td><input type="number" value="0" name="netto"></td>
+                <td><input type="number" value="1" min="1" max="1000" name="quantity" style="width: 60px"></td>
+                <td><select name="taxValue" id="tax">
+                        <option value="">wybierz stawke VAT</option>
+                            <option value="1.23">23%</option>
+                            <option value="1.08">8%</option>
+                            <option value="1.03">3%</option>
+                            <option value="1.00">0%</option>
+                            <option value="1.00">NP</option>
+                            <option value="1.00">ZW</option>
+                    </select></td>
+                <td><input type="number" value="0" name="brutto"></td>
+                <td id="taxPayable">0</td>
+                <td id="priceWithTax">0</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Myszki</td>
+                <td>Biuro</td>
+                <td><input type="number" value="0" name="netto"></td>
+                <td><input type="number" value="1" min="1" max="1000" name="quantity" style="width: 60px"></td>
+                <td><select name="taxValue" id="tax">
+                    <option value="">wybierz stawke VAT</option>
+                     <option value="1.23">23%</option>
+                     <option value="1.08">8%</option>
+                     <option value="1.03">3%</option>
+                     <option value="1.00">0%</option>
+                     <option value="1.00">NP</option>
+                     <option value="1.00">ZW</option>
+                    </select></td>
+                <td><input type="number" value="0" name="brutto"></td>
+                <td id="taxPayable">0</td>
+                <td id="priceWithTax">0</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Laptop</td>
+                <td>Biuro</td>
+                <td><input type="number" value="0" name="netto"></td>
+                <td><input type="number" value="1" min="1" max="1000" name="quantity" style="width: 60px"></td>
+                <td><select name="taxValue" id="tax">
+                        <option value="">wybierz stawke VAT</option>
+                        <option value="1.23">23%</option>
+                        <option value="1.08">8%</option>
+                        <option value="1.03">3%</option>
+                        <option value="1.00">0%</option>
+                        <option value="1.00">NP</option>
+                        <option value="1.00">ZW</option>
+                    </select></td>
+                <td><input type="number" value="0" name="brutto"></td>
+                <td id="taxPayable">0</td>
+                <td id="priceWithTax">0</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Monitor</td>
+                <td>Biuro</td>
+                <td><input type="number" value="0" name="netto"></td>
+                <td><input type="number" value="1" min="1" max="1000" name="quantity" style="width: 60px"></td>
+                <td><select name="taxValue" id="tax">
+                    <option value="">wybierz stawke VAT</option>
+                    <option value="1.23">23%</option>
+                    <option value="1.08">8%</option>
+                    <option value="1.03">3%</option>
+                    <option value="1.00">0%</option>
+                    <option value="1.00">NP</option>
+                    <option value="1.00">ZW</option>
+                    </select></td>
+                <td><input type="number" value="0" name="brutto"></td>
+                <td id="taxPayable">0</td>
+                <td id="priceWithTax">0</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Drukarka</td>
+                <td>Biuro</td>
+                <td><input type="number" value="0" name="netto"></td>
+                <td><input type="number" value="1" min="1" max="1000" name="quantity" style="width: 60px"></td>
+                <td><select name="taxValue" id="tax">
+                        <option value="">wybierz stawke VAT</option>
+                        <option value="1.23">23%</option>
+                            <option value="1.08">8%</option>
+                            <option value="1.03">3%</option>
+                            <option value="1.00">0%</option>
+                            <option value="1.00">NP</option>
+                            <option value="1.00">ZW</option>
+                    </select></td>
+                <td><input type="number" value="0" name="brutto"></td>
+                <td id="taxPayable">0</td>
+                <td id="priceWithTax">0</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        const app = () => {
+            //pobranie kontrolek z tabeli
+            const taxCalc = document.querySelector("#taxCalc");
+            const allRow = taxCalc.querySelectorAll("tbody tr");
+            let taxValueChoice = "";
+
+            //zamiana na brutto lub netto według podanej stawki
+            const convertNettoBrutto = (convert, val, tax) => {
+
+                switch (convert) {
+                    case 'add':
+                        return (val * Number(tax)).toFixed(2);
+                        break;
+                    case 'subtract':
+                        return (val / Number(tax)).toFixed(2);
+                        break;
+                    default:
+                        return "Błąd";
+                }
+            }
+            // Oblicznie kwoty VAT
+            const amountVat = (a, b, quantity) => {
+                return (a.value - b.value * quantity.value).toFixed(2);
+            }
+
+            function calc() {
+                // pobranie kontrolek z odpowiedniego rzędu
+                const taxValue = this.querySelector("select[name=taxValue]");
+                const netto = this.querySelector("input[name=netto]");
+                const brutto = this.querySelector("input[name=brutto]");
+                const taxPayable = this.querySelector("#taxPayable");
+                const priceWithTax = this.querySelector("#priceWithTax");
+                const quantity = this.querySelector("input[name=quantity]");
+
+                // Ustawienie stawki podatkowej
+                taxValueChoice = taxValue.options[taxValue.selectedIndex].value;
+                //Sprawdzenie czy stawka została wybrana
+                if (taxValueChoice == "") {
+                    taxValue.style.backgroundColor = "red";
+                } else {
+                    taxValue.style.backgroundColor = "initial";
+                }
+                // Nasłuchiwanie zmian wartości netto
+                netto.addEventListener('input', (event) => {
+                    brutto.value =
+                        `${convertNettoBrutto("add",event.target.value*quantity.value,taxValueChoice)}`;
+                    netto.style.color = (netto.value > 999) ? "green" : "initial";
+                    taxPayable.textContent = amountVat(brutto, netto, quantity);
+                    priceWithTax.textContent = brutto.value;
+                });
+                //Nasłuchiwanie zmian wartości brutto
+                brutto.addEventListener('input', (event) => {
+                    netto.value =
+                        `${convertNettoBrutto("subtract",event.target.value/quantity.value,taxValueChoice)}`;
+                    netto.style.color = (netto.value > 999) ? "green" : "initial";
+                    taxPayable.textContent = amountVat(brutto, netto, quantity);
+                    priceWithTax.textContent = brutto.value;
+                });
+            }
+            allRow.forEach((value, index, array) => {
+                value.addEventListener('click', calc);
+            })
+
+        }
+        app();
+        //Prawie jest ok. Brakuje jeszcze aktualizacji danych po zmianie ilości produktu oraz stawki vat
+    </script>
+</body>
+
+</html>
